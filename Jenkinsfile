@@ -9,7 +9,7 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/rak134/sampleapp.git',
+                        url: 'https://github.com/Laharih28/jenkinsassign.git',
                         credentialsId: 'github-token'
                     ]]
                 ])
@@ -41,7 +41,7 @@ pipeline {
         stage("Deploy To Artifactory") {
             agent { label 'Slave' }
             steps {
-                configFileProvider([configFile(fileId: '8f023859-bc45-44cd-ae4a-e3462a3edcf3', variable: 'MAVEN_SETTINGS')]) {
+                configFileProvider([configFile(fileId: '64f5e694-7041-47ec-9a60-a2fe415dd855', variable: 'MAVEN_SETTINGS')]) {
                     sh '''
                     mvn deploy -s $MAVEN_SETTINGS
                     '''
